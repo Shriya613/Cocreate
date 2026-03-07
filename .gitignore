@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+dist/
+.env
+
+# Node
+node_modules/
+frontend/dist/
+
+# Generated apps (large build artifacts)
+backend/generated_apps/
+backend/cocreate.db
+
+# Template build artifacts (keep node_modules for fast builds)
+backend/app/template/dist/
+
+# OS
+.DS_Store
