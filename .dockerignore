@@ -1,0 +1,22 @@
+# Python
+**/__pycache__/
+**/*.pyc
+**/.venv/
+backend/cocreate.db
+backend/generated_apps/
+
+# Node
+frontend/node_modules/
+frontend/dist/
+backend/app/template/node_modules/
+backend/app/template/dist/
+
+# Env / secrets
+**/.env
+.env.local
+
+# Git / IDE
+.git/
+.gitignore
+.cursor/
+*.md

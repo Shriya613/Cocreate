@@ -13,3 +13,5 @@ APPS_DIR = os.getenv("APPS_DIR", "./generated_apps")
 TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), "template")
 
 MAX_BUILD_RETRIES = int(os.getenv("MAX_BUILD_RETRIES", "3"))
+
+FRONTEND_DIST = os.getenv("FRONTEND_DIST", "")
