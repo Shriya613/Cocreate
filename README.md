@@ -4,6 +4,8 @@
 
 CoCreate turns natural language into fully functional React web apps. Generate a water tracker, a Solitaire game, a workout log, a tournament bracket — whatever you need. Then iterate conversationally: "make the accent color blue", "add a reset button", done. Every change is versioned so you can always roll back.
 
+<img width="1423" height="752" alt="Screenshot 2026-03-08 at 3 27 27 PM" src="https://github.com/user-attachments/assets/0c8db37b-7c7a-4766-beb7-d0fbafc20e10" />
+
 ---
 
 ## How it works
