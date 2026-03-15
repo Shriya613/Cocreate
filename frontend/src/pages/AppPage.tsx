@@ -51,7 +51,10 @@ export default function AppPage() {
   }, [appId])
 
   useEffect(() => { refresh() }, [refresh])
-  useEffect(() => { if (app) document.title = `${app.name} — CoCreate` }, [app])
+  useEffect(() => {
+    if (app) document.title = `${app.name} — CoCreate`
+    return () => { document.title = 'CoCreate — Build apps with words' }
+  }, [app])
   useEffect(() => { chatEndRef.current?.scrollIntoView({ behavior: 'smooth' }) }, [messages])
 
   async function handleSend() {
