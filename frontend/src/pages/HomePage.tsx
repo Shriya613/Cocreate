@@ -109,7 +109,9 @@ export default function HomePage() {
           <span className="text-xl font-semibold tracking-tight text-white">CoCreate</span>
           <span className="text-gray-500 text-sm ml-1 hidden sm:block">Build apps with words</span>
           {apps.length > 0 && (
-            <span className="ml-auto text-xs text-gray-600">{apps.length} app{apps.length !== 1 ? 's' : ''} built</span>
+            <span className="ml-auto text-xs bg-gray-800 text-gray-400 px-2.5 py-1 rounded-full">
+              {apps.length} app{apps.length !== 1 ? 's' : ''}
+            </span>
           )}
         </div>
       </header>
