@@ -19,7 +19,7 @@ type Stage = 'idle' | 'writing' | 'building' | 'done' | 'error'
 
 const STAGE_LABELS: Record<Stage, string> = {
   idle: '',
-  writing: 'Mistral is writing your app...',
+  writing: 'Mistral Large is writing your app...',
   building: 'Vite is building it...',
   done: 'Done!',
   error: '',
