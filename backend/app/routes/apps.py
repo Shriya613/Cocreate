@@ -1,4 +1,9 @@
+import io
+import zipfile
+from pathlib import Path
+
 from fastapi import APIRouter, Depends, HTTPException
+from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 import aiosqlite
 
@@ -53,6 +58,30 @@ async def list_versions(app_id: str, db: aiosqlite.Connection = Depends(get_db))
     if not app:
         raise HTTPException(status_code=404, detail="App not found")
     return await app_service.list_versions(db, app_id)
+
+
+@router.get("/{app_id}/export")
+async def export_app(app_id: str, db: aiosqlite.Connection = Depends(get_db)):
+    app = await app_service.get_app(db, app_id)
+    if not app:
+        raise HTTPException(status_code=404, detail="App not found")
+    dist_dir = get_app_dist_dir(app_id)
+    if not dist_dir.exists():
+        raise HTTPException(status_code=404, detail="App has not been built yet")
+
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as zf:
+        for file in Path(dist_dir).rglob("*"):
+            if file.is_file():
+                zf.write(file, file.relative_to(dist_dir))
+    buf.seek(0)
+
+    safe_name = "".join(c if c.isalnum() or c in "-_" else "_" for c in app["name"])
+    return StreamingResponse(
+        buf,
+        media_type="application/zip",
+        headers={"Content-Disposition": f'attachment; filename="{safe_name}.zip"'},
+    )
 
 
 class RestoreRequest(BaseModel):
